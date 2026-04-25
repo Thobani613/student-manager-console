@@ -12,3 +12,4 @@ C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\ref
 C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.pdb
 C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.genruntimeconfig.cache
 C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\ref\StudentManagerConsole.dll
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.sourcelink.json
