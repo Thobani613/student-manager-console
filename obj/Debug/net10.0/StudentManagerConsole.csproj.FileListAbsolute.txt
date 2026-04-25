@@ -1,0 +1,14 @@
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\bin\Debug\net10.0\StudentManagerConsole.exe
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\bin\Debug\net10.0\StudentManagerConsole.deps.json
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\bin\Debug\net10.0\StudentManagerConsole.runtimeconfig.json
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\bin\Debug\net10.0\StudentManagerConsole.dll
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\bin\Debug\net10.0\StudentManagerConsole.pdb
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.AssemblyInfoInputs.cache
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.AssemblyInfo.cs
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.dll
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\refint\StudentManagerConsole.dll
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.pdb
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.genruntimeconfig.cache
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\ref\StudentManagerConsole.dll
