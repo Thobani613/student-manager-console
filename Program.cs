@@ -6,14 +6,9 @@ bool isRunning = true;
 //while loop for when is running
 while (isRunning)
 {
-    Console.Clear();
-    Console.WriteLine("=== Student Manager ===");
-    Console.WriteLine("1. Add Student");
-    Console.WriteLine("2. View Student");
-    Console.WriteLine("3. Exit");
+    ShowMenu();
 
-    //we ask the user to choose an option 
-    Console.WriteLine("Choose an option: ");
+    Console.Write("Choose an option: ");
     string? choice = Console.ReadLine();
     
     //switch statement for for the option selected
@@ -21,43 +16,12 @@ while (isRunning)
     {
         case "1":
         Console.Clear();
-
-        Console.WriteLine("=== Add student === ");
-        Console.Write("Enter student name: ");
-        studentName = Console.ReadLine();
-
-        Console.Write("Enter student number: ");
-        studentNumber = Console.ReadLine();
-
-        Console.Write("Enter course name: ");
-        course = Console.ReadLine();
-
-        Console.WriteLine();
-        Console.WriteLine("Student added successfully");
-        Console.WriteLine("Press any key to exit to the menu");
-        Console.ReadKey();
-
+        AddStudent();
         break;
 
         case "2":
         Console.Clear();
-        Console.WriteLine("=== Student details ===");
-
-        if (string.IsNullOrWhiteSpace(studentName))
-            {
-                Console.WriteLine("No student has been added yet");
-            }
-            else
-            {
-                Console.WriteLine($"Name: {studentName}");
-                Console.WriteLine($"Student Number: {studentNumber}");
-                Console.WriteLine($"Course: {course}");
-            }
-            Console.WriteLine();
-
-            Console.WriteLine("Press any key to retrn to the main menu");
-            Console.ReadKey();
-
+        ViewStudent();
         break;
 
         case "3":
@@ -70,4 +34,61 @@ while (isRunning)
         Console.ReadKey();
         break;
     }
+}
+
+void ShowMenu()
+{
+    Console.WriteLine("=== Student Manager Console App ===");
+    Console.WriteLine("1. Add Student");
+    Console.WriteLine("2. View Student");
+    Console.WriteLine("3. Exit");
+    Console.WriteLine();
+}
+
+void AddStudent()
+{
+    Console.Clear();
+
+    Console.WriteLine("=== Add Student ===");
+
+    Console.Write("Enter student name: ");
+    studentName = Console.ReadLine();
+
+    Console.Write("Enter student number: ");
+    studentNumber = Console.ReadLine();
+
+    Console.Write("Enter course name: ");
+    course = Console.ReadLine();
+
+    Console.WriteLine();
+    Console.WriteLine("Student added successfully!");
+
+    Pause();
+}
+
+void ViewStudent()
+{
+    Console.Clear();
+
+    Console.WriteLine("=== Student Details ===");
+
+    if (string.IsNullOrWhiteSpace(studentName))
+    {
+        Console.WriteLine("No student has been added yet.");
+    }
+    else
+    {
+        Console.WriteLine($"Name: {studentName}");
+        Console.WriteLine($"Student Number: {studentNumber}");
+        Console.WriteLine($"Course: {course}");
+    }
+
+    Pause();
+}
+
+void Pause()
+{
+    Console.WriteLine();
+    Console.WriteLine("Press any key to return to the menu...");
+    Console.ReadKey();
 }
