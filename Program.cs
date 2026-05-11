@@ -1,6 +1,4 @@
-﻿string? studentName = null;
-string? studentNumber = null;
-string? course = null;
+﻿Student student= null;
 bool isRunning = true;
 
 //while loop for when is running
@@ -51,14 +49,16 @@ void AddStudent()
 
     Console.WriteLine("=== Add Student ===");
 
+    student = new Student();
+
     Console.Write("Enter student name: ");
-    studentName = Console.ReadLine();
+    student.Name = Console.ReadLine();
 
     Console.Write("Enter student number: ");
-    studentNumber = Console.ReadLine();
+    student.studentNumber = Console.ReadLine();
 
     Console.Write("Enter course name: ");
-    course = Console.ReadLine();
+    student.Course = Console.ReadLine();
 
     Console.WriteLine();
     Console.WriteLine("Student added successfully!");
@@ -72,15 +72,15 @@ void ViewStudent()
 
     Console.WriteLine("=== Student Details ===");
 
-    if (string.IsNullOrWhiteSpace(studentName))
+    if (student == null)
     {
         Console.WriteLine("No student has been added yet.");
     }
     else
     {
-        Console.WriteLine($"Name: {studentName}");
-        Console.WriteLine($"Student Number: {studentNumber}");
-        Console.WriteLine($"Course: {course}");
+        Console.WriteLine($"Name: {student.Name}");
+        Console.WriteLine($"Student Number: {student.studentNumber}");
+        Console.WriteLine($"Course: {student.Course}");
     }
 
     Pause();
