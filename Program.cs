@@ -1,4 +1,4 @@
-﻿List<Student> students = new List<Student>();
+﻿StudentService studentService = new StudentService();
 bool isRunning = true;
 
 //while loop for when is running
@@ -24,6 +24,7 @@ while (isRunning)
 
         case "3":
         isRunning = false;
+        
         break;
 
         default:
@@ -55,12 +56,12 @@ void AddStudent()
     student.Name = Console.ReadLine();
 
     Console.Write("Enter student number: ");
-    student.studentNumber = Console.ReadLine();
+    student.StudentNumber = Console.ReadLine();
 
     Console.Write("Enter course name: ");
     student.Course = Console.ReadLine();
 
-    students.Add(student);
+    studentService.AddStudent(student);
 
     Console.WriteLine();
     Console.WriteLine("Student added successfully!");
@@ -74,23 +75,26 @@ void ViewAllStudents()
 
     Console.WriteLine("=== All Students ===");
 
+    List<Student> students = studentService.GetAllStudents();
+
     if (students.Count == 0)
     {
         Console.WriteLine("No student has been added yet.");
     }
     else
     {
-       foreach(Student student in students)
+        foreach (Student student in students)
         {
             Console.WriteLine("--------------------");
             Console.WriteLine($"Name: {student.Name}");
-            Console.WriteLine($"Student Number:{student.studentNumber}");
+            Console.WriteLine($"Student Number: {student.StudentNumber}");
             Console.WriteLine($"Course: {student.Course}");
         }
     }
 
     Pause();
 }
+
 
 void Pause()
 {
