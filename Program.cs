@@ -1,4 +1,4 @@
-﻿Student student= null;
+﻿List<Student> students = new List<Student>();
 bool isRunning = true;
 
 //while loop for when is running
@@ -19,7 +19,7 @@ while (isRunning)
 
         case "2":
         Console.Clear();
-        ViewStudent();
+        ViewAllStudents();
         break;
 
         case "3":
@@ -38,7 +38,7 @@ void ShowMenu()
 {
     Console.WriteLine("=== Student Manager Console App ===");
     Console.WriteLine("1. Add Student");
-    Console.WriteLine("2. View Student");
+    Console.WriteLine("2. View  All Student");
     Console.WriteLine("3. Exit");
     Console.WriteLine();
 }
@@ -49,7 +49,7 @@ void AddStudent()
 
     Console.WriteLine("=== Add Student ===");
 
-    student = new Student();
+    Student student = new Student();
 
     Console.Write("Enter student name: ");
     student.Name = Console.ReadLine();
@@ -60,27 +60,33 @@ void AddStudent()
     Console.Write("Enter course name: ");
     student.Course = Console.ReadLine();
 
+    students.Add(student);
+
     Console.WriteLine();
     Console.WriteLine("Student added successfully!");
 
     Pause();
 }
 
-void ViewStudent()
+void ViewAllStudents()
 {
     Console.Clear();
 
-    Console.WriteLine("=== Student Details ===");
+    Console.WriteLine("=== All Students ===");
 
-    if (student == null)
+    if (students.Count == 0)
     {
         Console.WriteLine("No student has been added yet.");
     }
     else
     {
-        Console.WriteLine($"Name: {student.Name}");
-        Console.WriteLine($"Student Number: {student.studentNumber}");
-        Console.WriteLine($"Course: {student.Course}");
+       foreach(Student student in students)
+        {
+            Console.WriteLine("--------------------");
+            Console.WriteLine($"Name: {student.Name}");
+            Console.WriteLine($"Student Number:{student.studentNumber}");
+            Console.WriteLine($"Course: {student.Course}");
+        }
     }
 
     Pause();
