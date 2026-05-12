@@ -1,4 +1,5 @@
-﻿StudentService studentService = new StudentService();
+﻿
+IStudentService studentService = new StudentService();
 bool isRunning = true;
 
 //while loop for when is running

@@ -1,6 +1,10 @@
-public class Student
+public class Student : Person
 {
-    public string? Name{ get; set;}
-    public string? studentNumber{get; set;}
-    public string? Course{ get; set;}
+    public string? StudentNumber { get; set; }
+    public string? Course { get; set; }
+
+    public override string GetDetails()
+    {
+        return $"[Student]  Name: {Name} | Number: {StudentNumber} | Course: {Course}";
+    }
 }
