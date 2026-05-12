@@ -1,5 +1,6 @@
+
 public interface IStudentService
 {
-    void AddStudent(Student student);
+    bool AddStudent(Student student, out string errorMessage);
     List<Student> GetAllStudents();
 }

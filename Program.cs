@@ -1,54 +1,55 @@
-﻿
-IStudentService studentService = new StudentService();
+﻿IStudentService studentService = new StudentService(new StudentValidator());
 bool isRunning = true;
 
-//while loop for when is running
 while (isRunning)
 {
     ShowMenu();
 
     Console.Write("Choose an option: ");
     string? choice = Console.ReadLine();
-    
-    //switch statement for for the option selected
+
     switch (choice)
     {
         case "1":
-        Console.Clear();
-        AddStudent();
-        break;
+            Console.Clear();
+            AddStudent();
+            break;
 
         case "2":
-        Console.Clear();
-        ViewAllStudents();
-        break;
+            Console.Clear();
+            AddGraduateStudent();
+            break;
 
         case "3":
-        isRunning = false;
-        
-        break;
+            Console.Clear();
+            ViewAllStudents();
+            break;
+
+        case "4":
+            isRunning = false;
+            break;
 
         default:
-        Console.WriteLine("Invalid option. Please choose 1, 2, or 3.");
-        Console.WriteLine("Press any key to try again...");
-        Console.ReadKey();
-        break;
+            Console.WriteLine("Invalid option. Please choose 1, 2, 3 or 4.");
+            Console.WriteLine("Press any key to try again...");
+            Console.ReadKey();
+            break;
     }
 }
 
 void ShowMenu()
 {
-    Console.WriteLine("=== Student Manager Console App ===");
+    Console.Clear();
+    Console.WriteLine("=== Student Manager v7 ===");
     Console.WriteLine("1. Add Student");
-    Console.WriteLine("2. View  All Student");
-    Console.WriteLine("3. Exit");
+    Console.WriteLine("2. Add Graduate Student");
+    Console.WriteLine("3. View All Students");
+    Console.WriteLine("4. Exit");
     Console.WriteLine();
 }
 
 void AddStudent()
 {
-    Console.Clear();
-
     Console.WriteLine("=== Add Student ===");
 
     Student student = new Student();
@@ -62,40 +63,69 @@ void AddStudent()
     Console.Write("Enter course name: ");
     student.Course = Console.ReadLine();
 
-    studentService.AddStudent(student);
+    if (studentService.AddStudent(student, out string errorMessage))
+    {
+        Console.WriteLine("\n✅ Student added successfully!");
+    }
+    else
+    {
+        Console.WriteLine($"\n❌ Error: {errorMessage}");
+    }
 
-    Console.WriteLine();
-    Console.WriteLine("Student added successfully!");
+    Pause();
+}
+
+void AddGraduateStudent()
+{
+    Console.WriteLine("=== Add Graduate Student ===");
+
+    GraduateStudent student = new GraduateStudent();
+
+    Console.Write("Enter student name: ");
+    student.Name = Console.ReadLine();
+
+    Console.Write("Enter student number: ");
+    student.StudentNumber = Console.ReadLine();
+
+    Console.Write("Enter course name: ");
+    student.Course = Console.ReadLine();
+
+    Console.Write("Enter thesis title: ");
+    student.ThesisTitle = Console.ReadLine();
+
+    if (studentService.AddStudent(student, out string errorMessage))
+    {
+        Console.WriteLine("\n✅ Graduate Student added successfully!");
+    }
+    else
+    {
+        Console.WriteLine($"\n❌ Error: {errorMessage}");
+    }
 
     Pause();
 }
 
 void ViewAllStudents()
 {
-    Console.Clear();
-
     Console.WriteLine("=== All Students ===");
 
     List<Student> students = studentService.GetAllStudents();
 
     if (students.Count == 0)
     {
-        Console.WriteLine("No student has been added yet.");
+        Console.WriteLine("No students have been added yet.");
     }
     else
     {
         foreach (Student student in students)
         {
             Console.WriteLine("--------------------");
-            Console.WriteLine($"Name: {student.Name}");
-            Console.WriteLine($"Student Number: {student.StudentNumber}");
-            Console.WriteLine($"Course: {student.Course}");
+            Console.WriteLine(student.GetDetails());
         }
     }
 
     Pause();
 }
-
 
 void Pause()
 {

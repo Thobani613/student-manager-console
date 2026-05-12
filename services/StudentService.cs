@@ -1,14 +1,25 @@
 public class StudentService : IStudentService
 {
-    private List<Student> students = new List<Student>();
+    private readonly List<Student> _students = new List<Student>();
+    private readonly IValidator<Student> _validator;
 
-    public void AddStudent(Student student)
+    public StudentService(IValidator<Student> validator)
     {
-        students.Add(student);
+        _validator = validator;
+    }
+
+    public bool AddStudent(Student student, out string errorMessage)
+    {
+        if (!_validator.Validate(student, out errorMessage))
+            return false;
+
+        _students.Add(student);
+        errorMessage = string.Empty;
+        return true;
     }
 
     public List<Student> GetAllStudents()
     {
-        return students;
+        return _students;
     }
 }
