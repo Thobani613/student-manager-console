@@ -1,19 +1,18 @@
 using StudentManagerConsole.Interfaces;
 using StudentManagerConsole.Models;
-using System.Text.Json;
+using Microsoft.Data.Sqlite;
 
 namespace StudentManagerConsole.Services
 {
     public class StudentService : IStudentService
     {
         private readonly IValidator<Student> _validator;
-        private readonly string _filePath = "students.json";
-        private List<Student> _students;
+        private readonly string _connectionString = "Data Source=students.db";
 
         public StudentService(IValidator<Student> validator)
         {
             _validator = validator;
-            _students = LoadStudents();
+            InitializeDatabase();
         }
 
         public bool AddStudent(Student student, out string errorMessage)
@@ -21,30 +20,58 @@ namespace StudentManagerConsole.Services
             if (!_validator.Validate(student, out errorMessage))
                 return false;
 
-            _students.Add(student);
-            SaveStudents();
+            using SqliteConnection connection = new SqliteConnection(_connectionString);
+            connection.Open();
+
+            string sql = "INSERT INTO Students (Name, StudentNumber, Course) VALUES (@Name, @StudentNumber, @Course)";
+            using SqliteCommand command = new SqliteCommand(sql, connection);
+            command.Parameters.AddWithValue("@Name", student.Name);
+            command.Parameters.AddWithValue("@StudentNumber", student.StudentNumber);
+            command.Parameters.AddWithValue("@Course", student.Course);
+            command.ExecuteNonQuery();
+
             errorMessage = string.Empty;
             return true;
         }
 
         public List<Student> GetAllStudents()
         {
-            return _students;
+            List<Student> students = new List<Student>();
+
+            using SqliteConnection connection = new SqliteConnection(_connectionString);
+            connection.Open();
+
+            string sql = "SELECT Name, StudentNumber, Course FROM Students";
+            using SqliteCommand command = new SqliteCommand(sql, connection);
+            using SqliteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                students.Add(new Student
+                {
+                    Name = reader.GetString(0),
+                    StudentNumber = reader.GetString(1),
+                    Course = reader.GetString(2)
+                });
+            }
+
+            return students;
         }
 
-        private void SaveStudents()
+        private void InitializeDatabase()
         {
-            string json = JsonSerializer.Serialize(_students);
-            File.WriteAllText(_filePath, json);
-        }
+            using SqliteConnection connection = new SqliteConnection(_connectionString);
+            connection.Open();
 
-        private List<Student> LoadStudents()
-        {
-            if (!File.Exists(_filePath))
-                return new List<Student>();
+            string sql = @"CREATE TABLE IF NOT EXISTS Students (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Name TEXT NOT NULL,
+                StudentNumber TEXT NOT NULL,
+                Course TEXT NOT NULL
+            )";
 
-            string json = File.ReadAllText(_filePath);
-            return JsonSerializer.Deserialize<List<Student>>(json) ?? new List<Student>();
+            using SqliteCommand command = new SqliteCommand(sql, connection);
+            command.ExecuteNonQuery();
         }
     }
 }
