@@ -4,7 +4,14 @@ using StudentManagerConsole.Services;
 using StudentManagerConsole.Validators;
 using Microsoft.Extensions.DependencyInjection;
 
-IStudentService studentService = new StudentService(new StudentValidator());
+// DI Container setup
+ServiceCollection services = new ServiceCollection();
+services.AddSingleton<IValidator<Student>, StudentValidator>();
+services.AddSingleton<IStudentService, StudentService>();
+ServiceProvider serviceProvider = services.BuildServiceProvider();
+
+IStudentService studentService = serviceProvider.GetRequiredService<IStudentService>();
+
 bool isRunning = true;
 
 while (isRunning)
@@ -46,7 +53,7 @@ while (isRunning)
 void ShowMenu()
 {
     Console.Clear();
-    Console.WriteLine("=== Student Manager v7 ===");
+    Console.WriteLine("=== Student Manager ===");
     Console.WriteLine("1. Add Student");
     Console.WriteLine("2. Add Graduate Student");
     Console.WriteLine("3. View All Students");

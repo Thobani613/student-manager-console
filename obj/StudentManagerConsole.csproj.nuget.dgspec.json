@@ -55,6 +55,10 @@
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[10.0.8, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[10.0.8, )"
             }
           },
           "imports": [
