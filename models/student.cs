@@ -1,10 +1,13 @@
-public class Student : Person
+namespace StudentManagerConsole.Models
 {
-    public string? StudentNumber { get; set; }
-    public string? Course { get; set; }
-
-    public override string GetDetails()
+    public class Student : Person
     {
-        return $"[Student]  Name: {Name} | Number: {StudentNumber} | Course: {Course}";
+        public string? StudentNumber { get; set; }
+        public string? Course { get; set; }
+
+        public override string GetDetails()
+        {
+            return $"[Student]  Name: {Name} | Number: {StudentNumber} | Course: {Course}";
+        }
     }
 }

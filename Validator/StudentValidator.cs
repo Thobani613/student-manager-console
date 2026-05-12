@@ -1,26 +1,32 @@
-public class StudentValidator : IValidator<Student>
+using StudentManagerConsole.Interfaces;
+using StudentManagerConsole.Models;
+
+namespace StudentManagerConsole.Validators
 {
-    public bool Validate(Student student, out string errorMessage)
+    public class StudentValidator : IValidator<Student>
     {
-        if (string.IsNullOrWhiteSpace(student.Name))
+        public bool Validate(Student student, out string errorMessage)
         {
-            errorMessage = "Name cannot be empty.";
-            return false;
-        }
+            if (string.IsNullOrWhiteSpace(student.Name))
+            {
+                errorMessage = "Name cannot be empty.";
+                return false;
+            }
 
-        if (string.IsNullOrWhiteSpace(student.StudentNumber) || student.StudentNumber.Length < 5)
-        {
-            errorMessage = "Student number must be at least 5 characters.";
-            return false;
-        }
+            if (string.IsNullOrWhiteSpace(student.StudentNumber) || student.StudentNumber.Length < 5)
+            {
+                errorMessage = "Student number must be at least 5 characters.";
+                return false;
+            }
 
-        if (string.IsNullOrWhiteSpace(student.Course))
-        {
-            errorMessage = "Course cannot be empty.";
-            return false;
-        }
+            if (string.IsNullOrWhiteSpace(student.Course))
+            {
+                errorMessage = "Course cannot be empty.";
+                return false;
+            }
 
-        errorMessage = string.Empty;
-        return true;
+            errorMessage = string.Empty;
+            return true;
+        }
     }
 }

@@ -1,4 +1,10 @@
-﻿IStudentService studentService = new StudentService(new StudentValidator());
+﻿using StudentManagerConsole.Interfaces;
+using StudentManagerConsole.Models;
+using StudentManagerConsole.Services;
+using StudentManagerConsole.Validators;
+using Microsoft.Extensions.DependencyInjection;
+
+IStudentService studentService = new StudentService(new StudentValidator());
 bool isRunning = true;
 
 while (isRunning)

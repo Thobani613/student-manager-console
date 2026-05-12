@@ -1,9 +1,12 @@
-public class GraduateStudent : Student
+namespace StudentManagerConsole.Models
 {
-    public string? ThesisTitle { get; set; }
-
-    public override string GetDetails()
+    public class GraduateStudent : Student
     {
-        return $"[Graduate]  Name: {Name} | Number: {StudentNumber} | Course: {Course} | Thesis: {ThesisTitle}";
+        public string? ThesisTitle { get; set; }
+
+        public override string GetDetails()
+        {
+            return $"[Graduate]  Name: {Name} | Number: {StudentNumber} | Course: {Course} | Thesis: {ThesisTitle}";
+        }
     }
 }

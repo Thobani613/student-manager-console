@@ -1,25 +1,31 @@
-public class StudentService : IStudentService
+using StudentManagerConsole.Interfaces;
+using StudentManagerConsole.Models;
+
+namespace StudentManagerConsole.Services
 {
-    private readonly List<Student> _students = new List<Student>();
-    private readonly IValidator<Student> _validator;
-
-    public StudentService(IValidator<Student> validator)
+    public class StudentService : IStudentService
     {
-        _validator = validator;
-    }
+        private readonly List<Student> _students = new List<Student>();
+        private readonly IValidator<Student> _validator;
 
-    public bool AddStudent(Student student, out string errorMessage)
-    {
-        if (!_validator.Validate(student, out errorMessage))
-            return false;
+        public StudentService(IValidator<Student> validator)
+        {
+            _validator = validator;
+        }
 
-        _students.Add(student);
-        errorMessage = string.Empty;
-        return true;
-    }
+        public bool AddStudent(Student student, out string errorMessage)
+        {
+            if (!_validator.Validate(student, out errorMessage))
+                return false;
 
-    public List<Student> GetAllStudents()
-    {
-        return _students;
+            _students.Add(student);
+            errorMessage = string.Empty;
+            return true;
+        }
+
+        public List<Student> GetAllStudents()
+        {
+            return _students;
+        }
     }
 }

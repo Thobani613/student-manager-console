@@ -1,6 +1,10 @@
+using StudentManagerConsole.Models;
 
-public interface IStudentService
+namespace StudentManagerConsole.Interfaces
 {
-    bool AddStudent(Student student, out string errorMessage);
-    List<Student> GetAllStudents();
+    public interface IStudentService
+    {
+        bool AddStudent(Student student, out string errorMessage);
+        List<Student> GetAllStudents();
+    }
 }

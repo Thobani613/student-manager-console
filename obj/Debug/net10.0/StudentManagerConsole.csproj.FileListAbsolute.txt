@@ -13,3 +13,7 @@ C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\Stu
 C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.genruntimeconfig.cache
 C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\ref\StudentManagerConsole.dll
 C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.sourcelink.json
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentManagerConsole.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\bin\Debug\net10.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\bin\Debug\net10.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Dell\Desktop\CSharpProjects\StudentManagerConsole\obj\Debug\net10.0\StudentM.CBA68D35.Up2Date

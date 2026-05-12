@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "XPwpOl3Mp70=",
+  "dgSpecHash": "Y2xjyzB28yY=",
   "success": true,
   "projectFilePath": "C:\\Users\\Dell\\Desktop\\CSharpProjects\\StudentManagerConsole\\StudentManagerConsole.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.8\\microsoft.extensions.dependencyinjection.10.0.8.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.8\\microsoft.extensions.dependencyinjection.abstractions.10.0.8.nupkg.sha512"
+  ],
   "logs": []
 }
